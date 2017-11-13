@@ -1,9 +1,5 @@
-FROM golang:1.9
+FROM scratch
 
-RUN mkdir -p /app
-
-WORKDIR /app
-
-ADD bin/main /app/main
+ADD bin/main /main
 
 ENTRYPOINT ["./main"]
