@@ -1,5 +1,5 @@
 FROM scratch
 
-ADD bin/main /main
+ADD build/api /api
 
-ENTRYPOINT ["./main"]
+ENTRYPOINT ["./api"]
