@@ -3,7 +3,11 @@ package main
 import (
 	"net/http"
 
+	"github.com/FernandoCagale/go-api-public/src/checker"
+	"github.com/FernandoCagale/go-api-public/src/config"
+	"github.com/FernandoCagale/go-api-public/src/handlers"
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 func mainPublic(c echo.Context) error {
@@ -13,9 +17,20 @@ func mainPublic(c echo.Context) error {
 }
 
 func main() {
-	e := echo.New()
+	env := config.LoadEnv()
+	app := echo.New()
 
-	e.GET("/public", mainPublic)
+	checkers := map[string]checker.Checker{
+		"api":     checker.NewApi(),
+		"mongodb": checker.NewMongodb(env.DatastoreURL),
+	}
 
-	e.Logger.Fatal(e.Start(":8000"))
+	app.Use(middleware.Logger())
+
+	healthzHandler := handlers.NewHealthzHandler(checkers)
+	app.GET("/health", healthzHandler.HealthzIndex)
+
+	app.GET("/public", mainPublic)
+
+	app.Logger.Fatal(app.Start(":" + env.Port))
 }

@@ -8,6 +8,12 @@
   version = "v1.1.0"
 
 [[projects]]
+  name = "github.com/joho/godotenv"
+  packages = ["."]
+  revision = "a79fa1e548e2c689c241d10173efd51e5d689d5b"
+  version = "v1.2.0"
+
+[[projects]]
   name = "github.com/labstack/echo"
   packages = ["."]
   revision = "b28538b2e3f5446fe6e0e47ee34cd74b662ca2ab"
@@ -67,9 +73,15 @@
   packages = ["unix"]
   revision = "1e2299c37cc91a509f1b12369872d27be0ce98a6"
 
+[[projects]]
+  branch = "v2"
+  name = "gopkg.in/mgo.v2"
+  packages = [".","bson","internal/json","internal/sasl","internal/scram"]
+  revision = "3f83fa5005286a7fe593b055f0d7771a7dce4655"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ad00dd284a7bbb5f5da49e26443856c97ac63bf48291c533e7c5f90a40420883"
+  inputs-digest = "f8ec9d5c421e66851dd92471367733b8e4c79d364c379b660dba7727827afff7"
   solver-name = "gps-cdcl"
   solver-version = 1
