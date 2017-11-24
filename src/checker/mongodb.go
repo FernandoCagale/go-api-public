@@ -1,7 +1,7 @@
 package checker
 
 import (
-	"gopkg.in/mgo.v2"
+	mgo "gopkg.in/mgo.v2"
 )
 
 type mongodb struct {
