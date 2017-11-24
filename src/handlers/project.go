@@ -142,7 +142,7 @@ func (h *ProjectHandler) DeleteProject(c echo.Context) error {
 func getCollection(c echo.Context) (*mgo.Collection, bool) {
 	if mongo := c.Get("mongo"); mongo != nil {
 		session := mongo.(*mgo.Session)
-		return session.DB(Database).C(Collection), true
+		return session.DB(database).C(collection), true
 	}
 	return nil, false
 }
